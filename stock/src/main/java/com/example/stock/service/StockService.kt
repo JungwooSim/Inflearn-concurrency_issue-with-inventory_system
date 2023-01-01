@@ -10,6 +10,7 @@ class StockService(
   private val stockRepository: StockRepository
 ) {
 
+  @Synchronized
   fun decrease(id: Long, quantity: Long) {
     val stock: Stock = stockRepository.findByIdOrNull(id) ?: throw RuntimeException("stock null error")
 
