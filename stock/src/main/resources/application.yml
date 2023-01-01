@@ -3,18 +3,22 @@ spring:
     hibernate:
       ddl-auto: create
     show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
   datasource:
     url: 'jdbc:h2:mem:stock_example'
     username: 'user'
     password: ''
     driver-class-name: org.h2.Driver
 
-logging:
-  level:
-    org:
-      hibernate:
-        SQL: DEBUG
-        type:
-          descriptor:
-            sql:
-              BasicBinder: TRACE
+#logging:
+#  level:
+#    org:
+#      hibernate:
+#        SQL: DEBUG
+#        type:
+#          descriptor:
+#            sql:
+#              BasicBinder: TRACE
