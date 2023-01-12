@@ -24,3 +24,16 @@
     - 이름을 가진 matadata locking 방법
     - 이름을 가진 lock 을 획득한 후 해체될때까지 다른 세션은 이 lock 을 획득할 수 없도록한다.
     - 주의할점은 transaction 이 종료될 때 lock 이 자동으로 해체되지 않는다.
+
+**Redis Distributed Lock**
+
+- Lettuce
+  - redis 의 setnx 명령어 활용
+  - spin lock 방식
+    - redis 에 지속적으로 lock 여부를 물어보고, lock 이 안걸렸을때 수행
+      → 구현은 간단하지만, redis 에 부하를 줄 수 있다.
+- Redisson
+  - pub-sub 기반으로 Lock 구현 제공
+    - 구현은 다소 복잡하지만, redis 의 부하를 줄일 수 있다.
+
+보통, 재시도가 필요하지 않은 경우에는 lettuce 를 사용하고, 재시도가 필요한 경우에는 Redisson 을 사용한다.
